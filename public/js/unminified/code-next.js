@@ -1329,8 +1329,10 @@
 
             for (var i = 0; i < json.objects.length; i++) {
                 if (json.objects[i].objectType == "textbox") {
-                    json.objects[i].fontFamily =
-                        json.objects[i].fontFamily + "-code-next";
+                    // Store original font for later use
+                    json.objects[i].originalFontFamily = json.objects[i].fontFamily;
+                    // Use default safe font for initial loading
+                    json.objects[i].fontFamily = settings.fontFamily;
                 }
             }
 
@@ -1374,7 +1376,7 @@
         function loadTemplateFonts(objects) {
             if (objects.length !== 0) {
                 $.each(objects, function (index, val) {
-                    var font = val.fontFamily.replace("-code-next", "");
+                    var font = val.originalFontFamily || val.fontFamily.replace("-code-next", "");
                     val.fontFamily = settings.fontFamily;
                     var loadFonts = "yes";
                     if (font == "") {
@@ -7187,7 +7189,7 @@
 
         async function fetchData(id) {
             try {
-                let response = await fetch("/data/templates/" + id + ".json");
+                let response = await fetch("/files/templates/json/" + id + ".json");
                 if (response.status === 404) {
                     return null;
                 }
