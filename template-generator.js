@@ -11,7 +11,7 @@ class TemplateGenerator {
     constructor() {
         this.imgDir = path.join(__dirname, 'public', 'files', 'templates', 'img');
         this.jsonDir = path.join(__dirname, 'public', 'files', 'templates', 'json');
-        this.supportedFormats = ['.jpg', '.jpeg', '.png', '.webp'];
+        this.supportedFormats = ['.jpg', '.jpeg', '.png', '.webp' , '.svg'];
         this.canvasWidth = 1414;
         this.canvasHeight = 2000;
     }
