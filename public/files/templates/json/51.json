@@ -314,6 +314,7 @@
     },
     {
       "type": "textbox",
+      "version": "4.6.0",
       "left": 470,
       "top": 1260,
       "width": 160,
